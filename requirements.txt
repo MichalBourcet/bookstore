@@ -6,3 +6,4 @@ sqlparse==0.4.3
 psycopg2==2.9.3
 typing_extensions==4.3.0
 django-allauth==0.51.0
+environs[django]==9.5.0

@@ -162,7 +162,17 @@ AUTHENTICATION_BACKENDS = (
     "django.contrib.auth.backends.ModelBackend",
     "allauth.account.auth_backends.AuthenticationBackend",
 )
-EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey' # this is exactly the value 'apikey'
+EMAIL_HOST_PASSWORD = env("SENDGRID_APIKEY") # this is your API key
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = env("SENDGRID_EMAIL") # this is the sendgrid email
+# DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"  
+
+# print("sanity check: gmail user = [",env("GMAIL_USER"),"] password =[",env("GMAIL_PASSWORD"),"]",sep="")
+
 #ACCOUNT_SESSION_REMEMBER = True  
 #ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False  
 #ACCOUNT_USERNAME_REQUIRED = False  
@@ -170,4 +180,3 @@ ACCOUNT_AUTHENTICATION_METHOD = "email"
 ACCOUNT_EMAIL_REQUIRED = True  
 ACCOUNT_UNIQUE_EMAIL = True  
 
-DEFAULT_FROM_EMAIL = "admin@djangobookstore.com"  

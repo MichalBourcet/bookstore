@@ -43,6 +43,7 @@
   <div class="container">
     {% if user.is_authenticated %}
     <h1> Hello {{ user }}! </h1>
+    {% endif %}
     {% block content %}
     {% endblock content %}
   </div>
